@@ -1,6 +1,19 @@
 import './App.css';
-// import { HashRouter, NavLink } from 'react-router-dom';
-import { HashRouter, NavLink, Route, Routes } from 'react-router-dom'
+import { HashRouter, NavLink, Route, Routes, useNavigate } from 'react-router-dom'
+
+var Logout = () => {
+  var isLogin;
+  var navigate = useNavigate();
+
+  return (
+    <button onClick={() => {
+      if (!isLogin) {
+        navigate('/login')
+      }
+    }}>登出</button>
+  )
+}
+
 const Todo = () => {
   return <p>這是 Todo 頁面</p>;
 };
@@ -35,12 +48,6 @@ function App() {
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={ <Login /> } />
           <Route path='/todo' element={ <Todo /> } />
-          <Route path="*" element={
-            <main style={{ padding: "1rem" }}>
-              <p>回到首頁</p>
-            </main>
-            }
-          />
         </Routes>
       </HashRouter>
     </div>
